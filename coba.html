@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cobaaaaaa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+         body{
+               margin: 0;
+               padding: 0;
+               font-family: 'Poppins', sans-serif;
+          }
+
+          .container-all{
+               display: flex;
+          }
+
+          .container-1{
+               height: 700px;
+               width: 50%;
+               background-color: rgb(235, 243, 243);
+
+          }
+
+          .container-2{
+               width: 50%;
+               height: 700px;
+               background-color: rgb(154, 138, 248);
+          }
+
+          .img{
+               margin-left: 200px;
+               margin-top: 35%;
+          }
+          
+          #judul {
+               position: absolute;
+               margin-top: 345px;
+               margin-left: 150px;
+               font-size: 25px;
+          }
+
+          #validation {
+               position: absolute;
+               font-size: 15px; 
+               font-weight: bold;
+               margin-top: 390px;
+               margin-left: 151px;
+            
+          }
+
+          #user {
+               position: absolute;
+               margin-top: 420px;
+               width: 280px;
+               height: 35px;
+               margin-left: 150px;
+          }
+
+          #btn {
+               position: absolute;
+               width: 287px;
+               height: 35px;
+               margin-top: 450px;
+               margin-left: 150px;
+               background-color: rgb(0, 89, 255);
+               color: white;
+               border-color: white;
+               font-size: 14px;
+               font-weight: bold;
+          }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+     <!-- <div class="container-all" id="container-all">
+        <div class="container1" id="container1">
+            <div class="formlogin">
+                <h1>Log In-Kuis 3</h1>
+                <form action="">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" id="user" placeholder="Enter username">
+                    <p id="validation"></p>
+                    <button type="button" class="btn btn-primary btn-lg" id="jua" onclick="next()">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="container2" id="container2">
+
+        </div>
+    </div>
+</body> -->
+      
+     <div class="container-all">
+          <div class="container-1">
+              <h2 id="judul">Log In - Kuis 3</h2>
+              <form action="myForm">
+              <p id="validation">Username</p>
+              <input type="text" id="user" placeholder="Masukan username anda"><br>
+              <button id="btn" onclick="next()">Login</button>
+          </from>
+       </div>
+   
+
+          <div class="container-2">
+               <div class="img">
+               <img src="https://cdn-icons-png.flaticon.com/512/4212/4212486.png" height="320px" alt="">
+               </div>
+          </div>
+     </div>
+</body>
+    
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
+</script>
+<!-- End Sweet Alert -->
+
+
+<!-- My scipt -->
+<script>
+
+  const validationCapitalUsername = (userName) => /^(?=.*[A-Z])/.test(userName);
+  const validationUsernameAdmin = (userName) => /^(?=.*admin)/.test(userName);
+
+  const form = document.getElementById("");
+
+  form.onsubmit = (e) => {
+    // Stop page from reload
+    e.preventDefault();
+
+    // validation username and set message
+    if (validationCapitalUsername(e.target.elements.username.value)) {
+      // Error text validation
+      document.getElementById("validation").innerHTML =
+        "Username harus huruf kecil";
+
+      // validation input with id username border red
+      document.getElementById("username").style.border = "2px solid red";
+
+      // validation color red
+      document.getElementById("validation").style.color = "red";
+    } else if (validationUsernameAdmin(e.target.elements.username.value)) {
+      // Error text validation
+      document.getElementById("validation").innerHTML = "Username Tidak Valid";
+
+      // validation input with id username border red
+      document.getElementById("username").style.border = "2px solid red";
+
+      // validation color red
+      document.getElementById("validation").style.color = "red";
+    } else {
+      // Reset validation error text
+      document.getElementById("validation").innerHTML = "";
+
+      // Reset validation input with id username border black
+      document.getElementById("username").style.border = "2px solid black";
+
+      // Sweet Alert success
+      Swal.fire(
+        "Login Success",
+        "Redirect to the next screen in 5 sec",
+        "success"
+      );
+
+      // Redirect to next screen in 5 sec
+      setTimeout(function(){
+          window.location.href = 'login.html';
+       }, 5000);
+    }
+  };
+
+
+</script>
+<!-- End My script -->
+
+</body>
+</html>

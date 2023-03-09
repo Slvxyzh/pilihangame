@@ -1,0 +1,101 @@
+/* body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-all{
+    display: flex;
+}
+
+.container1{
+    height: 700px;
+    width: 50%;
+    background-color: rgb(235, 243, 243);
+
+}
+
+.container2{
+    width: 50%;
+    height: 700px;
+    background-color: rgb(76, 100, 167);
+}
+
+.img{
+    margin-left: 200px;
+    margin-top: 30%;
+}
+
+.form-label {
+    position: absolute;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 22%;
+    margin-left: 185px;
+}
+
+#user{
+    position: absolute;
+    margin-top: 24%;
+    margin-left: 180px;
+    width: 290px;
+    height: 42px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(212, 208, 208);
+}
+
+#jua{
+    position: absolute;
+    margin-top: 28%;
+    margin-left: 180px;
+    font-size: 16px;
+    width: 300px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 68, 255);
+    position: absolute;
+}
+
+h1{
+    position: absolute;
+    margin-top: 18%;
+    margin-left: 179px;
+}
+
+canvas{
+    border: 1px solid gray;
+    background-color: gray;
+    margin-top: 170px;
+    margin-left: 350px;
+    position: absolute;
+}
+
+.tomboll{
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 35%;
+    margin-left: 350px;
+    width: 703px;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:  rgb(0, 68, 255);
+}
+
+.tomboll:hover{
+    background-color: rgb(141, 141, 141);
+    color: rgb(0, 68, 255);
+}
+
+#name {
+    position: absolute;
+    margin-top: 14%;
+    margin-left: 360px;
+    color: rgb(255, 255, 255);
+} */

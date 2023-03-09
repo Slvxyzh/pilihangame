@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 3</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+          * {
+               margin: 0;
+               padding: 0;
+               font-family: 'Poppins', sans-serif;
+          }
+
+          canvas {
+               border:1px solid #F0E5CF;
+               background-color: #FEFBF3;
+               margin-left: 350px;
+               margin-top: 55px;
+          }
+
+          .bg {
+               background-color: #7a2ae2;
+               width: 620px;
+               height: 650px;
+               position: absolute;
+               margin-left: 566px;
+               margin-top: -309px;
+          }
+
+          .gmbr {
+               width: 300px;
+               position: absolute;
+               margin-left: 750px;
+               margin-top: -150px;
+          }
+
+          .container-all {
+               margin-top: 220px;
+               margin-left: 180px;
+               position: absolute;
+          }
+
+          .form-label{
+               font-size: 15px;
+               margin-top: 8px;
+               position: absolute;
+          }
+
+          .form-control {
+               width: 280px;
+               height: 35px;
+               position: absolute;
+               margin-top: 10px;
+               padding-left: 8px;
+          }
+
+          #jua{
+               width: 290px;
+               height: 39px;
+               margin-top: 60px;
+               background-color: #7a2ae296;
+               color: white;
+               border: none;
+               font-size: 14px;
+               font-weight: bold;
+               position: absolute;
+               cursor: pointer;
+               position: absolute;
+          }
+
+          #name {
+               margin-top: -480px;
+               position: absolute;
+               margin-left: 370px;
+               color: #000000;
+          }
+
+          .tomboll{
+               margin-top: 510px;
+               margin-left: -702px;
+               position: absolute;
+               width: 702px;
+               height: 50px;
+               color: white;
+               background-color: #7a2ae2;
+               font-size: 17px;
+               font-weight: bold;
+               border: none;
+               cursor: pointer;
+          }
+
+          .tomboll:hover{
+               background-color: #F0E5CF;
+               color: #b57dff;
+          }
+        </style>
+</head>
+<body>
+     <div class="container-all" id="container-all">
+          <div class="container1" id="container1">
+               <div class="formlogin">
+                    <h1>Log In - Quiz 3</h1>
+                    <form action="">
+                         <label class="form-label">Username</label><br>
+                         <input type="text" class="form-control" id="user" placeholder="Masukkan username anda">
+                         <p id="validation"></p>
+                         <button type="button" class="btn btn-primary btn-lg" id="jua" onclick="next()">Login</button>
+                    </form>
+               </div>
+          </div>
+          <div id="samping">
+               <div class="bg"></div>
+               <img src="https://cdn-icons-png.flaticon.com/512/4212/4212486.png" alt="" class="gmbr">
+          </div>
+     </div>
+</body>
+     <script>
+          var myGamePiece;
+          function next(){
+               var username =document.getElementById('user').value;
+               var validation =document.getElementById("validation");
+               if(username === "selvi"){
+                validation.remove();
+                
+                let sala = document.getElementById("user");
+                    sala.style = "border-color : black;"
+                    let warning = swal({
+                         icon : "success",
+                         title : "Login Success",
+                         text : "Redirect to the next screen in 5 second",
+                         timer : 5000,
+                    });
+                    setTimeout(()=>{
+                         myGamePiece = new component(50,50,"#7a2ae296",30,100)
+                         myGameArea.start();
+                         let user = document.createElement("p");
+                         user.setAttribute("id","name");
+
+                         let reset = document.createElement("input");
+                         reset.setAttribute("type","submit");
+                         reset.setAttribute("value", "Reset")
+                         reset.setAttribute("onclick","ulang()");
+                         reset.setAttribute("class", "tomboll");
+
+                         document.body.append(reset);
+                         document.body.append(user);
+                         user.textContent = "Username : selvi";
+                         reset.textContent("reset");
+
+                         document.getElementById("name").innerHTML = "Username : " + username;
+                    },5000)
+                    
+
+               }else{
+                    validation.innerHTML="username salah"
+                    validation.style= "color : red; margin-top: 50px; margin-bottom: -60px"
+                    let salah = document.getElementById("user");
+                    salah.style = "border-color : red;"
+               }
+          }
+          
+          var myGameArea = {
+          canvas : document.createElement("canvas"),
+          start : function() {
+               this.canvas.width = 700;
+               this.canvas.height = 500;
+               this.context = this.canvas.getContext("2d");
+               document.getElementById("container-all").remove();
+
+               document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+               this.interval = setInterval(updateGameArea, 20);
+               window.addEventListener('keydown', function (e) {
+                    myGameArea.keys = (myGameArea.keys || []);
+                    myGameArea.keys[e.keyCode] = (e.type == "keydown");
+               })
+               window.addEventListener('keyup', function (e) {
+                    myGameArea.keys[e.keyCode] = (e.type == "keydown");            
+               })    
+          }, 
+          clear : function(){
+               this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          }
+          
+          }
+
+          function component(width, height, color, x, y) {
+               this.gamearea = myGameArea;
+               this.width = width;
+               this.height = height;
+               this.speedX = 0;
+               this.speedY = 0;    
+               this.x = x;
+               this.y = y;    
+               this.update = function() {
+                    ctx = myGameArea.context;
+                    ctx.fillStyle = color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+               }
+               this.newPos = function() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;        
+               }    
+          }
+
+          function updateGameArea() {
+          myGameArea.clear();
+          myGamePiece.speedX = 0;
+          myGamePiece.speedY = 0;    
+          if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -1; }
+          if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 1; }
+          if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -1; }
+          if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 1; }
+          myGamePiece.newPos();    
+          myGamePiece.update();
+          }
+
+          function ulang(){
+          location.reload();
+          }
+</script>
+</html>
